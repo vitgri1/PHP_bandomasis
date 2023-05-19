@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CountryController as C;
 use App\Http\Controllers\HotelController as H;
 use App\Http\Controllers\FrontController as F;
+use App\Http\Controllers\ReservationController as R;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::prefix('travel')->name('travel-')->group(function () {
     Route::get('/', [F::class, 'index'])->name('index')->middleware('role:admin|client');
     Route::post('/', [F::class, 'reserve'])->name('reserve')->middleware('role:admin|client');
     Route::get('/my', [F::class, 'reservation'])->name('reservation')->middleware('role:admin|client');
+    Route::get('/approval', [R::class, 'index'])->name('approval')->middleware('role:admin');
+    Route::put('/approval/{reservation}', [R::class, 'update'])->name('approve')->middleware('role:admin');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

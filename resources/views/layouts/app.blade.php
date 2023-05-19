@@ -59,6 +59,12 @@
                             </div>
                         </li>
 
+                        <li class="nav-item nav-link">
+                            <a class="dropdown-item" href="{{ route('travel-approval') }}">
+                                Reservation approval
+                            </a>
+                        </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

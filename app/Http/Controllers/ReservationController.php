@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
-use App\Http\Requests\StoreReservationRequest;
-use App\Http\Requests\UpdateReservationRequest;
+use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $reservations = Reservation::all();
+
+        return view('back.reservations',[
+            'reservations' => $reservations,
+        ]);
     }
 
     /**
@@ -27,7 +28,7 @@ class ReservationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReservationRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -51,9 +52,12 @@ class ReservationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateReservationRequest $request, Reservation $reservation)
+    public function update(Request $request, Reservation $reservation)
     {
-        //
+        $reservation->update([
+            'approved'=> 1
+        ]);
+        return redirect()->back()->with('ok', 'reservation was approved');
     }
 
     /**
