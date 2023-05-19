@@ -51,4 +51,9 @@ class Hotel extends Model
             'photo' => null,
         ]);
     }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }

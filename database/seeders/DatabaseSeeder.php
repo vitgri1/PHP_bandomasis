@@ -28,6 +28,27 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('abc123'),
             'role' => 10,
         ]);
+        
+        DB::table('users')->insert([
+            'name' => 'Jonas3',
+            'email' => 'jonas3@gmail.com',
+            'password' => Hash::make('abc123'),
+            'role' => 10,
+        ]);
+        
+        DB::table('users')->insert([
+            'name' => 'Jonas4',
+            'email' => 'jonas4@gmail.com',
+            'password' => Hash::make('abc123'),
+            'role' => 10,
+        ]);
+        
+        DB::table('users')->insert([
+            'name' => 'Jonas5',
+            'email' => 'jonas5@gmail.com',
+            'password' => Hash::make('abc123'),
+            'role' => 10,
+        ]);
 
         $faker = Faker::create();
 
@@ -44,6 +65,14 @@ class DatabaseSeeder extends Seeder
                 'cost' => rand(1,999)+ rand(0,99)/100,
                 'country_id' => rand(1,15),
                 'duration'=> rand(1, 100).' days'
+            ]);
+        }
+
+        foreach(range(1, 15) as $_) {
+            DB::table('reservations')->insert([
+                'user_id' => rand(2,5),
+                'hotel_id' => rand(1,30),
+                'approved' => rand(0,1),
             ]);
         }
 

@@ -42,6 +42,7 @@ Route::prefix('hotel')->name('hotel-')->group(function () {
 
 Route::prefix('travel')->name('travel-')->group(function () {
     Route::get('/', [F::class, 'index'])->name('index')->middleware('role:admin|client');
+    Route::post('/', [F::class, 'reserve'])->name('reserve')->middleware('role:admin|client');
     Route::get('/my', [F::class, 'reservation'])->name('reservation')->middleware('role:admin|client');
 });
 

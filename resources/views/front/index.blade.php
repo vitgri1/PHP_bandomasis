@@ -71,9 +71,11 @@
                             @endif
 
                             <div class="buttons">
-                                <a class="btn btn-success" href="{{ route('hotel-edit', $hotel) }}">
-                                    Edit
-                                </a>
+                                <form action="{{route('travel-reserve')}}" method="post">
+                                    <input type="hidden" name="hotel_id" value="{{$hotel->id}}">
+                                    <button type="submit" class="btn btn-primary">Reserve</button>
+                                    @csrf
+                                </form>
                             </div>
                         </li>
                         @empty
