@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,5 +28,24 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('abc123'),
             'role' => 10,
         ]);
+
+        $faker = Faker::create();
+
+        foreach(range(1, 15) as $_) {
+            DB::table('countries')->insert([
+                'title' => $faker->country,
+                'season' => rand(1, 4)
+            ]);
+        }
+
+        foreach(range(1, 30) as $_) {
+            DB::table('hotels')->insert([
+                'title' => $faker->company,
+                'cost' => rand(1,999)+ rand(0,99)/100,
+                'country_id' => rand(1,15),
+                'duration'=> rand(1, 100).' days'
+            ]);
+        }
+
     }
 }
