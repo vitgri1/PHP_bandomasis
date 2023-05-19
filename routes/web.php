@@ -17,6 +17,7 @@ use App\Http\Controllers\ReservationController as R;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
