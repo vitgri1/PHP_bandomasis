@@ -59,7 +59,7 @@ class FrontController extends Controller
                 ->withErrors($validator);
         }
 
-        if(Reservation::where('hotel_id', $request->hotel_id)->first())
+        if(Reservation::where('user_id', $request->user()->id)->where('hotel_id', $request->hotel_id)->first())
         {
             return redirect()
             ->back()
