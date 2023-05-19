@@ -37,11 +37,11 @@
                             </a>
                         </li>
 
-                        {{-- <li class="nav-item nav-link">
-                            <a class="dropdown-item" href="{{ route('') }}">
+                        <li class="nav-item nav-link">
+                            <a class="dropdown-item" href="{{ route('travel-reservation') }}">
                                 My travel
                             </a>
-                        </li> --}}
+                        </li>
 
                     </ul>
 

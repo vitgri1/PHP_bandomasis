@@ -13,6 +13,20 @@ class Hotel extends Model
     protected $fillable = ['title', 'cost', 'country_id', 'photo', 'duration'];
     public $timestamps = false;
 
+    const SORT = [
+        'title_asc' => 'By title A-Z',
+        'title_desc' => 'By title Z-A',
+    ];
+
+    const PER = [
+        '5' => '5',
+        '10' => '10',
+        '15' => '15',
+        '20' => '20',
+        '50' => '50',
+        '100' => '100',
+    ];
+
     public function inCountry() 
     {
         return $this->belongsTo(Country::class, 'country_id', 'id');
