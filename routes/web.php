@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CountryController as C;
 use App\Http\Controllers\HotelController as H;
+use App\Http\Controllers\FrontController as F;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,10 @@ Route::prefix('hotel')->name('hotel-')->group(function () {
     Route::get('/edit/{hotel}', [H::class, 'edit'])->name('edit')->middleware('role:admin');
     Route::put('/edit/{hotel}', [H::class, 'update'])->name('update')->middleware('role:admin');
     Route::delete('/delete/{hotel}', [H::class, 'destroy'])->name('delete')->middleware('role:admin');
+});
+
+Route::prefix('travel')->name('travel-')->group(function () {
+    Route::get('/', [F::class, 'index'])->name('index')->middleware('role:admin|client');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
