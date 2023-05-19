@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CountryController as C;
+use App\Http\Controllers\HotelController as H;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,15 @@ Route::prefix('country')->name('country-')->group(function () {
     Route::get('/edit/{country}', [C::class, 'edit'])->name('edit')->middleware('role:admin');
     Route::put('/edit/{country}', [C::class, 'update'])->name('update')->middleware('role:admin');
     Route::delete('/delete/{country}', [C::class, 'destroy'])->name('delete')->middleware('role:admin');
+});
+
+Route::prefix('hotel')->name('hotel-')->group(function () {
+    Route::get('/', [H::class, 'index'])->name('index')->middleware('role:admin');
+    Route::get('/create', [H::class, 'create'])->name('create')->middleware('role:admin');
+    Route::post('/create', [H::class, 'store'])->name('store')->middleware('role:admin');
+    Route::get('/edit/{hotel}', [H::class, 'edit'])->name('edit')->middleware('role:admin');
+    Route::put('/edit/{hotel}', [H::class, 'update'])->name('update')->middleware('role:admin');
+    Route::delete('/delete/{hotel}', [H::class, 'destroy'])->name('delete')->middleware('role:admin');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
